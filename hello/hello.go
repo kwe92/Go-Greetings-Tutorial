@@ -4,33 +4,16 @@ package main
 
 import (
 	"fmt"
-	"log"
 
 	"example.com/greetings"
+	"example.com/logger"
 )
 
-// Logger encapsulates logging errors.
-type Logger struct {
-}
-
-// Error sets prefixes, flags, prints error and exits the program.
-func (logger Logger) Error(err error, logger_prefix string) {
-
-	// Sets the output prefix displayed to the console from the logger.
-	log.SetPrefix(logger_prefix)
-
-	// Sets the output flags for the logger.
-	log.SetFlags(0)
-
-	// Prints the error concatenating the logger prefix and exits the application with os.Exit(1)
-	log.Fatal(err)
-}
-
 func main() {
-	logger := Logger{}
+	logger := logger.Logger{}
 	message, err := greetings.Hello("")
 	if err != nil {
-		logger.Error(err, "greetings: ")
+		logger.Error(err, "\ngreetings: ")
 	}
 	fmt.Printf(message)
 }
