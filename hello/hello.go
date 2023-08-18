@@ -9,11 +9,11 @@ import (
 	"example.com/greetings"
 )
 
-// Logger encapsulates logging.
+// Logger encapsulates logging errors.
 type Logger struct {
 }
 
-// Error
+// Error sets prefixes, flags, prints error and exits the program.
 func (logger Logger) Error(err error, logger_prefix string) {
 
 	// Sets the output prefix displayed to the console from the logger.
