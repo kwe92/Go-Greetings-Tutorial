@@ -9,7 +9,7 @@ import (
 func Hello(name string) (string, error) {
 	// if the name is empty throw an error
 	if name == "" {
-		return "", errors.New("Name can not be empty, provide a name.")
+		return "", errors.New("Name can not be empty, provide a name.\n\n")
 	}
 	message := fmt.Sprintf("\nHello %v, welcome to the Go community!\n\n", name)
 
