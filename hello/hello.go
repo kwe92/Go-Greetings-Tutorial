@@ -6,14 +6,26 @@ import (
 	"fmt"
 
 	"example.com/greetings"
-	"example.com/logger"
+	log "example.com/logger"
+	utils "example.com/utility"
 )
 
 func main() {
-	logger := logger.Logger{}
-	message, err := greetings.Hello("")
+	people := []string{
+		"",
+		"Kweayon",
+		"Ronin",
+		"Devin",
+		"Lillia",
+		"James",
+	}
+
+	randomPerson := people[utils.RandInt(len(people))]
+
+	logError := log.Logger{}.Error
+	message, err := greetings.Hello(randomPerson)
 	if err != nil {
-		logger.Error(err, "\ngreetings: ")
+		logError(err, "\ngreetings: ")
 	}
 	fmt.Printf(message)
 }
