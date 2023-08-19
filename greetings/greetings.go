@@ -3,7 +3,8 @@ package greetings
 import (
 	"errors"
 	"fmt"
-	"math/rand"
+
+	utils "example.com/utility"
 )
 
 // Hello returns a greeting of the named person.
@@ -28,12 +29,8 @@ func randomGreeting() string {
 
 	sliceLength := len(greetings)
 
-	return greetings[randomInt(sliceLength)]
+	return greetings[utils.RandInt(sliceLength)]
 
-}
-
-func randomInt(exclusive_range int) int {
-	return rand.Intn(exclusive_range)
 }
 
 // ?--------------------Summary--------------------?//
