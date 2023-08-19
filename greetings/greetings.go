@@ -3,6 +3,7 @@ package greetings
 import (
 	"errors"
 	"fmt"
+	"math/rand"
 )
 
 // Hello returns a greeting of the named person.
@@ -11,16 +12,37 @@ func Hello(name string) (string, error) {
 	if name == "" {
 		return "", errors.New("Name can not be empty, provide a name.\n\n")
 	}
-	message := fmt.Sprintf("\nHello %v, welcome to the Go community!\n\n", name)
+	message := fmt.Sprintf(randomGreeting(), name)
 
 	return message, nil
 }
+
+// randomGreeting returns a random greeting
+func randomGreeting() string {
+	// Slice consisting of greetings as elements
+	greetings := []string{
+		"\nHi, %v. Welcome!\n\n",
+		"\nGreat to see you, %v!\n\n",
+		"\nHail, %v! Well met!\n\n",
+	}
+
+	sliceLength := len(greetings)
+
+	return greetings[randomInt(sliceLength)]
+
+}
+
+func randomInt(exclusive_range int) int {
+	return rand.Intn(exclusive_range)
+}
+
+// ?--------------------Summary--------------------?//
 
 // fmt.Sprintf
 
 //   ~ a format string, similar to python format string literals:
 //       + f string literal or more precisely literal string dot format:
-// 		     - 'Hello %v, welcome to the Python community.format(message)'
+// 		     - 'Hello %v, welcome to the Python community'.format(message)
 
 // errors package
 
@@ -48,8 +70,12 @@ func Hello(name string) (string, error) {
 
 // Return data-type head
 
-//   - in Go you can ha ve two heads
+//   - in Go you can have two heads
 //   - the first head specifies the set of parameters and their types
 //   - the second head can be ommited if there is only 1 returned variable
 //   - if there is more than 1 variable being returned a second head is required
 //   - providing variable names within the return type head is optional (why add more optional code? K.I.S.M)
+
+// Array (fixed-length Iterable) | Slice (Groeable Iterable)
+
+// Slices are abstractions of arrays
