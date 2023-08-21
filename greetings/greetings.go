@@ -10,12 +10,25 @@ import (
 // Hello returns a greeting of the named person.
 func Hello(name string) (string, error) {
 	// if the name is empty throw an error
-	if name == "" {
+	if IsEmpty(name) {
 		return "", errors.New("Name can not be empty, provide a name.\n\n")
 	}
 	message := fmt.Sprintf(randomGreeting(), name)
 
 	return message, nil
+}
+
+// Hellos returns a greeting for every person in the array of people.
+func Hellos(people []string) (map[string]string, error) {
+	greetings := make(map[string]string)
+	for _, name := range people {
+		greeting, err := Hello(name)
+		if HasError(err) {
+			return nil, err
+		}
+		greetings[name] = greeting
+	}
+	return greetings, nil
 }
 
 // randomGreeting returns a random greeting
@@ -31,6 +44,21 @@ func randomGreeting() string {
 
 	return greetings[utils.RandInt(sliceLength)]
 
+}
+
+func IsEmpty(str string) bool {
+	if str == "" {
+		return true
+	}
+	return false
+
+}
+
+func HasError(err error) bool {
+	if err != nil {
+		return true
+	}
+	return false
 }
 
 // ?--------------------Summary--------------------?//
@@ -76,3 +104,18 @@ func randomGreeting() string {
 // Array (fixed-length Iterable) | Slice (Groeable Iterable)
 
 // Slices are abstractions of arrays
+
+// for range GO
+
+//   - similar to pythons for in enumerate
+//   - using range automatically includes the enumerated index
+//   - if you do not need the index you can use a placeholder _ like all other languages
+//   - e.g.
+//       - Go: for index, name := range names {...}
+//       - Python: for index, name in enumerate(names):
+//                     ...
+
+// make function
+
+//   - similar to the new keyword in other languages
+//   - instead of returning a reference `pointer` to the created object it returns the object
