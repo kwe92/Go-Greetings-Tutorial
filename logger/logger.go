@@ -4,20 +4,16 @@ import (
 	"log"
 )
 
-// Logger encapsulates logging errors.
-type Logger struct {
-}
-
 // Error sets prefixes, flags, prints error and exits the program.
-func (logger Logger) Error(err error, logger_prefix string) {
+func Error(err error, logger_prefix string) {
 
 	// Sets the output prefix displayed to the console from the logger.
 	log.SetPrefix(logger_prefix)
 
-	// Sets the output flags for the logger.
+	// Sets the output flags `time stamps` for the logger.
 	log.SetFlags(0)
 
-	// Prints the error concatenating the logger prefix and exits the application with os.Exit(1)
+	// Prints the error concatenating the logger prefix and exits the application with os.Exit(1).
 	log.Fatal(err)
 }
 
@@ -26,6 +22,6 @@ func (logger Logger) Error(err error, logger_prefix string) {
 //   - you can not implement methods directly in a struct
 //   ~ to implement a method for a struct you must:
 
-//       - define a callback outside of the struct that takes
+//       + define a callback outside of the struct that takes
 //         the struct as an argument
-//       - the callback acts as a method to any instances of the passed in struct
+//       + the callback acts as a method to any instances of the passed in struct
