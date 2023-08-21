@@ -48,6 +48,7 @@ func TestHelloEmpty(test *testing.T) {
 // What is Automated Testing?
 
 //   - Implementation of an automation tool to execute test cases
+//   - most mordern SDK's comw with a standard testing library
 
 // Why Write Automated Tests?
 
@@ -72,11 +73,16 @@ func TestHelloEmpty(test *testing.T) {
 // go test CLI command
 
 //   - used in conjunction with the testing package
-//   - the functions in files suffixed with _test.go
-//     are considered as test routines and test suites
-//   - and go test executes them as such
+//   - the function prefixed with Test in files suffixed with _test.go
+//     are considered test routines part of a test suite
+//   - which can be executed as go test
 //   - analogous to the flutter test command
 //   - go test -v (added verboseness to the output test message)
+
+// Failed Tests with go test
+
+//   - for brevity the go test command only prints output
+//     results if the test has failed
 
 // Test Routine
 
@@ -100,6 +106,10 @@ func TestHelloEmpty(test *testing.T) {
 
 //   - the test routine callback takes a testing structure
 //     as an argument, which allows you to handle fatal errors
+
+// testing.Fatalf | Method
+
+//   - Prints a message to the console and ends execution
 
 // Struct Parameters
 
