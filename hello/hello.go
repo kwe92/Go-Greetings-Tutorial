@@ -24,10 +24,12 @@ func main() {
 
 	logError := log.Logger{}.Error
 	message, err := greetings.Hello(randomPerson)
+	messages, err := greetings.Hellos(people[1:5])
 	if err != nil {
 		logError(err, "\ngreetings: ")
 	}
 	fmt.Printf(message)
+	fmt.Println(messages)
 }
 
 // Executing Go code as an Application
