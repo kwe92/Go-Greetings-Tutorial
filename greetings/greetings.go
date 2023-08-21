@@ -15,6 +15,7 @@ func Hello(name string) (string, error) {
 		return "", errors.New("Name can not be empty, provide a name.\n\n")
 	}
 	message := fmt.Sprintf(randomGreeting(), name)
+	// message := fmt.Sprintf(randomGreeting())
 
 	return message, nil
 }
