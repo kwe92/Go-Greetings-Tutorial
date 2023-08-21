@@ -6,7 +6,7 @@ import (
 	"fmt"
 
 	"example.com/greetings"
-	log "example.com/logger"
+	"example.com/logger"
 	utils "example.com/utility"
 )
 
@@ -22,10 +22,10 @@ func main() {
 
 	randomPerson := people[utils.RandInt(len(people))]
 
-	logError := log.Logger{}.Error
+	logError := logger.Error
 	message, err := greetings.Hello(randomPerson)
 	messages, err := greetings.Hellos(people[1:5])
-	if err != nil {
+	if utils.HasError((err)) {
 		logError(err, "\ngreetings: ")
 	}
 	fmt.Printf(message)
